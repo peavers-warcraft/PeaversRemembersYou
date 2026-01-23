@@ -1,4 +1,4 @@
-## Interface: 120000
+## Interface: 120000, 120001
 
 ## Title: |cff3abdf7Peavers|rRemembersYou
 ## Notes: Records players you group with and notifies you when you meet them again
