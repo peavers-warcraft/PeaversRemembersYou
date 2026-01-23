@@ -3,7 +3,7 @@
 ## Title: |cff3abdf7Peavers|rRemembersYou
 ## Notes: Records players you group with and notifies you when you meet them again
 ## Author: Peavers
-## Version: 1.0.23
+## Version: 1.0.24
 
 ## IconTexture: Interface\AddOns\PeaversCommons\src\Media\Icon.tga
 ## Category-enUS: Peavers
