@@ -1,0 +1,13 @@
+# .peavers.yml - Addon metadata for peavers.io website
+
+# Icon to display on website
+iconType: HealingRuneIcon
+
+# CurseForge project ID for download statistics
+curseForgeProjectId: 1243255
+
+# Tags for filtering and categorization
+tags:
+  - raid
+  - party
+  - group
