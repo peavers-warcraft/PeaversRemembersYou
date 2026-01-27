@@ -16,7 +16,8 @@ A World of Warcraft addon that displays notifications when you group with player
 ## Installation
 
 1. Download from [CurseForge](https://www.curseforge.com/wow/addons/peaversremembersyou)
-2. Enable the addon on the character selection screen
+2. Ensure PeaversCommons is also installed
+3. Enable the addon on the character selection screen
 
 ## Usage
 
@@ -33,3 +34,7 @@ Access settings through `/pry` to customize:
 - Retention period for player history
 - Guild member exclusion
 - Notification display settings
+
+## Dependencies
+
+- PeaversCommons (required)
