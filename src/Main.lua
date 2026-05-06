@@ -65,6 +65,18 @@ PeaversCommons.Events:Init(addonName, function()
 		)
 	end)
 
+	-- Register with PeaversConfig registry
+	if PeaversCommons.ConfigRegistry then
+		PeaversCommons.ConfigRegistry:Register({
+			name = "PeaversRemembersYou",
+			displayName = "Remembers You",
+			description = "Records and notifies about returning group members",
+			addonRef = PRY,
+			config = PRY.Config,
+			pages = PRY.ConfigUI:GetPages(),
+			order = 7,
+		})
+	end
 end, {
 	suppressAnnouncement = true
 })
