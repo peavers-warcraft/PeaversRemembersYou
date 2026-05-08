@@ -12,7 +12,7 @@
 ## X-Source-Code: https://github.com/peavers-warcraft/PeaversRemembersYou
 ## X-Curse-Project-ID: 1243255
 
-## Dependencies: PeaversCommons
+## Dependencies: PeaversCommons, PeaversConfig
 ## SavedVariables: PeaversRemembersYouDB
 
 Changelog.lua
