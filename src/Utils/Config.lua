@@ -1,31 +1,35 @@
+--------------------------------------------------------------------------------
+-- PeaversRemembersYou Configuration
+-- Uses PeaversCommons.ConfigManager with AceDB-3.0 for profile management
+--------------------------------------------------------------------------------
+
 local addonName, PRY = ...
 
--- Access PeaversCommons utilities
 local PeaversCommons = _G.PeaversCommons
+local ConfigManager = PeaversCommons.ConfigManager
 
--- Default settings
-local defaults = {
+local PRY_DEFAULTS = {
     enabled = true,
-    ttl = 30, -- Time to live in days
+    ttl = 30,
     excludeGuild = true,
     chatFrame = 1,
-    notificationThreshold = 300, -- Minimum time in seconds
-    DEBUG_ENABLED = false
+    notificationThreshold = 300,
+    DEBUG_ENABLED = false,
 }
 
--- Create configuration using PeaversCommons.ConfigManager
-PRY.Config = PeaversCommons.ConfigManager:New(
-    "PeaversRemembersYou", 
-    defaults,  -- Default settings first
+-- Create the AceDB-backed config
+PRY.Config = ConfigManager:NewWithAceDB(
+    PRY,
+    PRY_DEFAULTS,
     {
         savedVariablesName = "PeaversRemembersYouDB",
-        settingsKey = "settings" -- Use settings key for backward compatibility
+        profileType = "shared",
     }
 )
 
--- Initialize configuration is already handled by the ConfigManager
+local Config = PRY.Config
 
--- Make sure we have a players table for legacy compatibility
+-- Player data is stored separately from profile settings (global data)
 local function InitializePlayers()
     PeaversRemembersYouDB = PeaversRemembersYouDB or {}
     if not PeaversRemembersYouDB.players then
@@ -33,30 +37,24 @@ local function InitializePlayers()
     end
 end
 
--- Add custom config methods for working with the players database
-function PRY.Config:GetPlayerData(name)
+function Config:GetPlayerData(name)
     InitializePlayers()
     return PeaversRemembersYouDB.players[name]
 end
 
-function PRY.Config:SetPlayerData(name, data)
+function Config:SetPlayerData(name, data)
     InitializePlayers()
     PeaversRemembersYouDB.players[name] = data
 end
 
-function PRY.Config:ResetPlayerData()
+function Config:ResetPlayerData()
     InitializePlayers()
     PeaversRemembersYouDB.players = {}
 end
 
-function PRY.Config:GetAllPlayerData()
+function Config:GetAllPlayerData()
     InitializePlayers()
     return PeaversRemembersYouDB.players
-end
-
-function PRY.Config:Initialize()
-    -- For backward compatibility, ensure initialization of players table
-    InitializePlayers()
 end
 
 return PRY.Config

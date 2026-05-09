@@ -1,6 +1,7 @@
 package-as: PeaversRemembersYou
 
 required-dependencies:
+  - peaversconfig
   - peaverscommons
 
 ignore:

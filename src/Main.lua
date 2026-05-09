@@ -49,22 +49,22 @@ PeaversCommons.Events:Init(addonName, function()
 		PRY.Patrons:Initialize()
 	end
 
-	-- Use the centralized SettingsUI system from PeaversCommons
 	C_Timer.After(0.5, function()
-		-- Create standardized settings pages
-		PeaversCommons.SettingsUI:CreateSettingsPages(
-			PRY,                       -- Addon reference
-			"PeaversRemembersYou",     -- Addon name
-			"Peavers Remembers You",   -- Display title
-			"Records players you group with and notifies you when you meet them again.",  -- Description
-			{   -- Slash commands
-				"/pry - Open settings",
-				"/pry reset - Reset player database",
-				"/pry help - Show available commands"
-			}
-		)
+		PeaversCommons.SettingsUI:CreateRedirectPage(PRY, "PeaversRemembersYou", "Peavers Remembers You")
 	end)
 
+	-- Register with PeaversConfig registry
+	if PeaversCommons.ConfigRegistry then
+		PeaversCommons.ConfigRegistry:Register({
+			name = "PeaversRemembersYou",
+			displayName = "Remembers You",
+			description = "Records and notifies about returning group members",
+			addonRef = PRY,
+			config = PRY.Config,
+			pages = PRY.ConfigUI:GetPages(),
+			order = 7,
+		})
+	end
 end, {
 	suppressAnnouncement = true
 })
