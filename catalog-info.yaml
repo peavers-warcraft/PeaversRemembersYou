@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: PeaversRemembersYou
+  description: "A World of Warcraft addon that displays notifications when you group with players you've previously played with."
+  annotations:
+    github.com/project-slug: peavers-warcraft/PeaversRemembersYou
+spec:
+  type: library
+  lifecycle: production
+  owner: peavers-warcraft
