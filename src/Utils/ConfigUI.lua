@@ -5,7 +5,6 @@ PRY.ConfigUI = ConfigUI
 
 local PeaversCommons = _G.PeaversCommons
 local W = PeaversCommons.Widgets
-local C = W.Colors
 
 local pageOpts = {
     indent = 25,
@@ -53,7 +52,7 @@ function ConfigUI:BuildGeneralPage(parentFrame)
     toggle2:SetPoint("TOPLEFT", indent, y)
     y = y - 40
 
-    local _, newY = W:CreateSectionHeader(parentFrame, "Notification Settings", indent, y)
+    _, newY = W:CreateSectionHeader(parentFrame, "Notification Settings", indent, y)
     y = newY - 8
 
     local ttlSlider = W:CreateSlider(parentFrame, "Days to Remember Players", {
@@ -92,7 +91,7 @@ function ConfigUI:BuildGeneralPage(parentFrame)
     thresholdSlider:SetPoint("TOPLEFT", indent, y)
     y = y - 60
 
-    local _, newY = W:CreateSectionHeader(parentFrame, "Database Management", indent, y)
+    _, newY = W:CreateSectionHeader(parentFrame, "Database Management", indent, y)
     y = newY - 8
 
     local resetBtn = W:CreateButton(parentFrame, "Reset Database", {
