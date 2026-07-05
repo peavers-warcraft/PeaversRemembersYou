@@ -21,3 +21,4 @@ src\Main.lua
 src\Utils\Config.lua
 src\Utils\ConfigUI.lua
 src\Core\Core.lua
+src\UI\ListUI.lua

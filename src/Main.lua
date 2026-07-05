@@ -18,6 +18,12 @@ PRY.name = addonName
 -- Register slash commands
 PeaversCommons.SlashCommands:Register(addonName, "pry", {
 	default = function()
+		PRY.ListUI:Toggle()
+	end,
+	list = function()
+		PRY.ListUI:Toggle()
+	end,
+	config = function()
 		Settings.OpenToCategory("PeaversRemembersYou")
 	end,
 	reset = function()
@@ -25,7 +31,8 @@ PeaversCommons.SlashCommands:Register(addonName, "pry", {
 	end,
 	help = function()
 		Utils.Print(PRY, "Commands:")
-		print("  /pry - Open settings")
+		print("  /pry - Open the player list")
+		print("  /pry config - Open settings")
 		print("  /pry reset - Reset player database")
 	end
 })

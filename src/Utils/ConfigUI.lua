@@ -94,6 +94,15 @@ function ConfigUI:BuildGeneralPage(parentFrame)
     _, newY = W:CreateSectionHeader(parentFrame, "Database Management", indent, y)
     y = newY - 8
 
+    local listBtn = W:CreateButton(parentFrame, "Open Player List", {
+        width = 150,
+        onClick = function()
+            PRY.ListUI:Toggle()
+        end,
+    })
+    listBtn:SetPoint("TOPLEFT", indent, y)
+    y = y - 32
+
     local resetBtn = W:CreateButton(parentFrame, "Reset Database", {
         style = "danger",
         width = 150,
