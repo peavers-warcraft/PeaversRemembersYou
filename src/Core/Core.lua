@@ -112,7 +112,8 @@ function PRY:ProcessGroupMember(name, unit, guid, groupType, isNewGroup)
         if not (PRY.Config.excludeGuild and isGuildMember) then
             -- Only process if they're not already in the current group
             if not currentGroupMembers[name] or isNewGroup then
-                self:ProcessPlayer(name, groupType)
+                local _, classFile = UnitClass(unit)
+                self:ProcessPlayer(name, groupType, classFile)
             end
         end
 
@@ -188,7 +189,7 @@ function PRY:ProcessGroupMembers()
 end
 
 -- Process a player
-function PRY:ProcessPlayer(name, groupType)
+function PRY:ProcessPlayer(name, groupType, classFile)
     -- Skip processing if the player name is "Unknown"
     if name == "Unknown" then return end
 
@@ -218,16 +219,22 @@ function PRY:ProcessPlayer(name, groupType)
             end
         end
 
-        -- Update last seen time and group type
+        -- Update last seen time, group type and encounter count
         playerData.lastSeen = currentTime
         playerData.groupType = groupType
+        playerData.count = (playerData.count or 1) + 1
+        if classFile then
+            playerData.class = classFile
+        end
         PRY.Config:SetPlayerData(name, playerData)
     else
         -- New player, add to database
         PRY.Config:SetPlayerData(name, {
             firstSeen = currentTime,
             lastSeen = currentTime,
-            groupType = groupType
+            groupType = groupType,
+            count = 1,
+            class = classFile
         })
     end
 end
@@ -281,7 +288,8 @@ function PRY:CheckPendingPlayers()
                 if guid and guid ~= "" then
                     -- Player now has a valid GUID, process them
                     if not currentGroupMembers[name] then
-                        self:ProcessPlayer(name, groupType)
+                        local _, classFile = UnitClass(unit)
+                        self:ProcessPlayer(name, groupType, classFile)
                         currentGroupMembers[name] = true
                     end
 
