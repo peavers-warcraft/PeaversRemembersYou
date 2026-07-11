@@ -33,6 +33,7 @@ Access settings through `/pry` to customize:
 - Notification display settings
 <!-- /peavers:configuration -->
 
+
 ## Installation
 
 ### Recommended: PeaversUpdater
