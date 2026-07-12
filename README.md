@@ -1,5 +1,7 @@
 # PeaversRemembersYou
 
+[![AddonSentry](https://api.addonsentry.io/api/public/repos/peavers-warcraft/PeaversRemembersYou/badge.svg)](https://addonsentry.io/dashboard/peavers-warcraft/PeaversRemembersYou)
+
 A World of Warcraft addon that displays notifications when you group with players you've previously played with.
 
 ## Features
