@@ -30,7 +30,7 @@ function ConfigUI:BuildGeneralPage(parentFrame)
     local _, newY = W:CreateSectionHeader(parentFrame, "General Options", indent, y)
     y = newY - 8
 
-    local toggle1 = W:CreateToggle(parentFrame, "Enable Addon", {
+    local toggle1 = W:CreateCheckbox(parentFrame, "Enable Addon", {
         checked = PRY.Config.enabled,
         width = width,
         onChange = function(checked)
@@ -41,7 +41,7 @@ function ConfigUI:BuildGeneralPage(parentFrame)
     toggle1:SetPoint("TOPLEFT", indent, y)
     y = y - 30
 
-    local toggle2 = W:CreateToggle(parentFrame, "Exclude Guild Members", {
+    local toggle2 = W:CreateCheckbox(parentFrame, "Exclude Guild Members", {
         checked = PRY.Config.excludeGuild,
         width = width,
         onChange = function(checked)
