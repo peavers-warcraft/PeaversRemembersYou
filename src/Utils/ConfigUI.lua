@@ -116,8 +116,29 @@ function ConfigUI:BuildGeneralPage(parentFrame)
     parentFrame:SetHeight(math.abs(y) + 30)
 end
 
+function ConfigUI:BuildInfoPage(parentFrame)
+    PeaversCommons.ConfigUIUtils.BuildInfoPage(parentFrame, "Remembers You", {
+        "Quietly records everyone you group with. The next time you meet them, " ..
+            "a notification tells you how long ago it was and what you ran " ..
+            "together - so a familiar name is never a mystery.",
+        { command = "/pry", desc = "open the list of remembered players" },
+        { command = "/pry config", desc = "open the configuration panel" },
+
+        { header = "What gets recorded" },
+        "Just the player's name, when you last grouped, and the group type - " ..
+            "party, raid, or dungeon. Everything stays in your local saved " ..
+            "variables; nothing is sent anywhere.",
+
+        { header = "Keeping the list tidy" },
+        "History older than the retention period is trimmed automatically, and " ..
+            "guild members can be excluded entirely - you presumably already " ..
+            "know them.",
+    })
+end
+
 function ConfigUI:GetPages()
     return {
+        { key = "info", label = "Information", builder = function(f) ConfigUI:BuildInfoPage(f) end },
         { key = "general", label = "General", builder = function(f) ConfigUI:BuildGeneralPage(f) end },
     }
 end
